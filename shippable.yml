@@ -8,9 +8,13 @@ build:
   cache_dir_list:
     - $HOME/.m2
     - $HOME/.stack
+    - $HOME/perl5
     - $SHIPPABLE_REPO_DIR/samples/client/petstore/elixir/deps
   ci:
     - sudo apt-get update -qq
+    # install perl
+    - cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+    - cpanm Test::Exception Test::More Log::Any LWP::UserAgent JSON URI:Query Module::Runtime DateTime Module::Find Moose::Role
     # install stack
     - curl -sSL https://get.haskellstack.org/ | sh
     # install elixir
