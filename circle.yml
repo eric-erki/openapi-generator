@@ -66,6 +66,9 @@ jobs:
     - run: sleep 30
     - run: cat /etc/hosts
     # Test
+    # test docker
+    - run: ./run-in-docker.sh 
+    # sample tests
     - run: mvn --quiet clean install
     - run: ./CI/circle_parallel.sh 
     # Save dependency cache
