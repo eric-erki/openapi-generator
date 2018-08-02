@@ -977,6 +977,7 @@
                 <!-- servers -->
                 <!-- disable erlang server test due to dependency issues
                 <module>samples/server/petstore/erlang-server</module> -->
+                <module>samples/server/petstore/ruby-on-rails</module>
                 <module>samples/server/petstore/jaxrs/jersey2</module>
                 <module>samples/server/petstore/jaxrs/jersey2-useTags</module>
                 <module>samples/server/petstore/spring-mvc</module>

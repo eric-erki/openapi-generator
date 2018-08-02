@@ -41,20 +41,19 @@
                             </arguments>
                         </configuration>
                     </execution>
-		    <!--<execution>
-                        <id>bundle-test</id>
+                    <execution>
+                        <id>rails-routes</id>
                         <phase>integration-test</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>bundle</executable>
+                            <executable>rails</executable>
                             <arguments>
-                                <argument>exec</argument>
-                                <argument>rspec</argument>
+                                <argument>routes</argument>
                             </arguments>
                         </configuration>
-		    </execution>-->
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
