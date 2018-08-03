@@ -27,6 +27,7 @@ build:
     # install rebar3
     - wget https://s3.amazonaws.com/rebar3/rebar3 && chmod +x rebar3 && cp rebar3 /usr/bin
     # install ruby gem
+    - sudo apt-get install rubygems-integration
     - gem install bundler
     - sudo gem install rails
     # show version
