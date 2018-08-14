@@ -1035,6 +1035,23 @@
             </modules>
         </profile>
     </profiles>
+        <profile>
+            <id>samples.cpp</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>samples.cpp</value>
+                </property>
+            </activation>
+            <modules>
+                <!-- clients -->
+                <module>samples/client/petstore/C</module>
+                <module>samples/client/petstore/cpp-restsdk<module>
+                <!-- servers -->
+                <module>samples/server/petstore/cpp-pistache/pistache</module>
+            </modules>
+        </profile>
+    </profiles>
     <modules>
         <module>modules/openapi-generator</module>
         <module>modules/openapi-generator-cli</module>

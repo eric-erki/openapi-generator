@@ -1,10 +1,10 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.openapitools</groupId>
-    <artifactId>RubyPetstoreClientTests</artifactId>
+    <artifactId>CPetstoreClientTests</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>Ruby OpenAPI Petstore Client</name>
+    <name>C Petstore Client</name>
     <build>
         <plugins>
             <plugin>
@@ -27,32 +27,26 @@
                 <version>1.2.1</version>
                 <executions>
                     <execution>
-                        <id>bundle-install</id>
+                        <id>cmake</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>bundle</executable>
+                            <executable>cmake</executable>
                             <arguments>
-                                <argument>install</argument>
-                                <argument>--path</argument>
-                                <argument>vendor/bundle</argument>
+                                <argument>.</argument>
                             </arguments>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>bundle-test</id>
+                        <id>make</id>
                         <phase>integration-test</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>bundle</executable>
-                            <arguments>
-                                <argument>exec</argument>
-                                <argument>rspec</argument>
-                            </arguments>
+                            <executable>make</executable>
                         </configuration>
                     </execution>
                 </executions>
