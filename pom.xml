@@ -1034,7 +1034,6 @@
                 <module>samples/server/petstore/php-slim</module>
             </modules>
         </profile>
-    </profiles>
         <profile>
             <id>samples.cpp</id>
             <activation>
