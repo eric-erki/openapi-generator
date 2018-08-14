@@ -1045,7 +1045,7 @@
             <modules>
                 <!-- clients -->
                 <module>samples/client/petstore/C</module>
-                <module>samples/client/petstore/cpp-restsdk</module>
+                <!--<module>samples/client/petstore/cpp-restsdk</module>-->
                 <!-- servers -->
                 <module>samples/server/petstore/cpp-pistache</module>
             </modules>
