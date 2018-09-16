@@ -27,9 +27,9 @@ cache:
   timeout: 1000
 
 # comment out the host table change to use the public petstore server
-addons:
-  hosts:
-    - petstore.swagger.io
+#addons:
+#  hosts:
+#    - petstore.swagger.io
 
 before_install:
   - export SW=`pwd`
@@ -48,7 +48,7 @@ before_install:
   # start local petstore server
   - git clone -b docker --single-branch https://github.com/wing328/swagger-samples
   - cd swagger-samples/java/java-jersey-jaxrs
-  - sudo mvn jetty:run &
+  #- sudo mvn jetty:run &
   - cd $SW
 
   # show host table to confirm petstore.swagger.io is mapped to localhost
