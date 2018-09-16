@@ -64,4 +64,5 @@ before_install:
 
 script:
   # run integration tests defined in maven pom.xml
+  - mvn clean install      
   - mvn -q --batch-mode verify -Psamples
