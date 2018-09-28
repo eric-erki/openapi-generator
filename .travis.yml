@@ -58,7 +58,7 @@ before_install:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y -v
   # required when sudo: required for the Ruby petstore tests
   - gem install bundler
-  - npm install -g typescript
+  - npm install -g typescript@3.0.3
   - npm install -g npm
   - npm install -g elm@0.18.0-exp5
   - npm config set registry http://registry.npmjs.org/
