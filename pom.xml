@@ -60,16 +60,6 @@
         <system>github</system>
         <url>https://github.com/openapitools/openapi-generator/issues</url>
     </issueManagement>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
     <licenses>
         <license>
             <name>Apache License 2.0</name>
@@ -260,7 +250,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M2</version>
+                <version>1.4.1</version>
                 <executions>
                     <execution>
                         <id>enforce-versions</id>
@@ -270,37 +260,10 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>3.3.3</version>
+                                    <version>3.2.5</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>de.thetaphi</groupId>
-                <artifactId>forbiddenapis</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <bundledSignatures>
-                        <!--
-                          This will automatically choose the right
-                          signatures based on 'maven.compiler.target':
-                        -->
-                        <bundledSignature>jdk-unsafe</bundledSignature>
-                        <bundledSignature>jdk-deprecated</bundledSignature>
-                        <bundledSignature>jdk-internal</bundledSignature>
-                        <!-- disallow undocumented classes like sun.misc.Unsafe: -->
-                        <bundledSignature>jdk-non-portable</bundledSignature>
-                        <bundledSignature>jdk-reflection</bundledSignature>
-                    </bundledSignatures>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                            <goal>testCheck</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -316,40 +279,6 @@
         </pluginManagement>
     </build>
     <profiles>
-
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.8</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
         <profile>
             <id>release-profile</id>
             <properties>
@@ -599,43 +528,7 @@
             </modules>
         </profile>
         <profile>
-            <id>javascript-client-es6</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>javascript</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/client/petstore/javascript-es6</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>javascript-client-promise</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>javascript</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/client/petstore/javascript-promise</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>javascript-client-promise-es6</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>javascript</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/client/petstore/javascript-promise-es6</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>scala-httpclient</id>
+            <id>scala-client</id>
             <activation>
                 <property>
                     <name>env</name>
@@ -643,7 +536,7 @@
                 </property>
             </activation>
             <modules>
-                <module>samples/client/petstore/scala-httpclient</module>
+                <module>samples/client/petstore/scala</module>
             </modules>
         </profile>
         <profile>
@@ -740,55 +633,6 @@
             </activation>
             <modules>
                 <module>samples/server/petstore/jaxrs/jersey1</module>
-            </modules>
-        </profile>
-        <profile>
-            <!-- openapi v3's one -->
-            <id>jaxrs-jersey</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>java</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/server/petstore/jaxrs-jersey</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>jaxrs-spec</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>java</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/server/petstore/jaxrs-spec</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>jaxrs-spec-interface</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>java</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/server/petstore/jaxrs-spec-interface</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>jaxrs-spec-interface-response</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>java</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/server/petstore/jaxrs-spec-interface-response</module>
             </modules>
         </profile>
         <profile>
@@ -948,18 +792,6 @@
             </modules>
         </profile>
         <profile>
-            <id>springboot-virtualan</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>java</value>
-                </property>
-            </activation>
-            <modules>
-                <module>samples/server/petstore/springboot-virtualan</module>
-            </modules>
-        </profile>
-        <profile>
             <id>spring-cloud</id>
             <activation>
                 <property>
@@ -1016,67 +848,15 @@
                 </property>
             </activation>
             <modules>
-                <!-- clients -->
-                <module>samples/client/petstore/dart-jaguar/openapi</module>
-                <module>samples/client/petstore/dart-jaguar/flutter_petstore/openapi</module>
-                <module>samples/client/petstore/dart2/petstore</module>
-                <module>samples/client/petstore/haskell-http-client</module>
-                <module>samples/client/petstore/elm-0.18</module>
-                <module>samples/client/petstore/groovy</module>
-                <module>samples/client/petstore/rust</module>
-                <!--<module>samples/client/petstore/perl</module>-->
-                <module>samples/client/petstore/php/OpenAPIClient-php</module>
-                <module>samples/openapi3/client/petstore/php/OpenAPIClient-php</module>
-                <module>samples/client/petstore/javascript</module>
-                <module>samples/client/petstore/javascript-es6</module>
-                <module>samples/client/petstore/javascript-promise</module>
-                <module>samples/client/petstore/javascript-promise-es6</module>
-                <module>samples/client/petstore/javascript-flowtyped</module>
-                <module>samples/client/petstore/python</module>
-                <module>samples/client/petstore/python-tornado</module>
-                <module>samples/client/petstore/python-asyncio</module>
-                <module>samples/client/petstore/typescript-fetch/builds/default</module>
-                <module>samples/client/petstore/typescript-fetch/builds/es6-target</module>
-                <module>samples/client/petstore/typescript-fetch/builds/with-npm-version</module>
-                <module>samples/client/petstore/typescript-fetch/tests/default</module>
-                <module>samples/client/petstore/typescript-axios/tests/default</module>
-                <!-- comment out due to newer version of TS installed
-                <module>samples/client/petstore/typescript-node/npm</module>-->
-                <!-- comment out due to github rate limit error
-                <module>samples/client/petstore/typescript-angularjs</module>-->
-                <!-- comment out due to error `npm run build`
-                <module>samples/client/petstore/typescript-jquery/npm</module>-->
-                <!--<module>samples/client/petstore/typescript-angular-v2/npm</module>-->
-                <module>samples/client/petstore/typescript-angular-v4/npm</module>
-                <module>samples/client/petstore/typescript-angular-v4.3/npm</module>
-                <module>samples/client/petstore/typescript-angular-v6-provided-in-root</module>
-                <!--<module>samples/client/petstore/bash</module>-->
-                <module>samples/client/petstore/ruby</module>
-                <module>samples/server/petstore/rust-server</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>samples.shippable</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>samples.shippable</value>
-                </property>
-            </activation>
-            <modules>
-                <!-- clients -->
-                <module>samples/client/petstore/elm</module>
-                <module>samples/client/petstore/elixir</module>
-                <module>samples/client/petstore/erlang-client</module>
-                <!-- servers -->
-                <!-- disable erlang server test due to dependency issues
-                <module>samples/server/petstore/erlang-server</module> -->
-                <module>samples/server/petstore/jaxrs/jersey2</module>
-                <module>samples/server/petstore/jaxrs/jersey2-useTags</module>
-                <module>samples/server/petstore/spring-mvc</module>
-                <module>samples/server/petstore/spring-mvc-j8-async</module>
-                <module>samples/server/petstore/spring-mvc-j8-localdatetime</module>
-                <module>samples/server/petstore/php-slim</module>
+                <module>samples/client/petstore/swift3/default/SwaggerClientTests</module>
+                <module>samples/client/petstore/swift3/promisekit/SwaggerClientTests</module>
+                <module>samples/client/petstore/swift3/rxswift/SwaggerClientTests</module>
+                <module>samples/client/petstore/swift/default/SwaggerClientTests</module>
+                <module>samples/client/petstore/swift/promisekit/SwaggerClientTests</module>
+                <module>samples/client/petstore/swift/rxswift/SwaggerClientTests</module>
+                <!-- comment out objc tests as it's timing out
+                <module>samples/client/petstore/objc/default/SwaggerClientTests</module>
+                <module>samples/client/petstore/objc/core-data/SwaggerClientTests</module>-->
             </modules>
         </profile>
     </profiles>
@@ -1084,7 +864,6 @@
         <module>modules/openapi-generator</module>
         <module>modules/openapi-generator-cli</module>
         <module>modules/openapi-generator-maven-plugin</module>
-        <module>modules/openapi-generator-gradle-plugin</module>
         <module>modules/openapi-generator-online</module>
     </modules>
     <reporting>
@@ -1149,8 +928,6 @@
         </repository>
     </repositories>
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <swagger-parser-version>2.0.4</swagger-parser-version>
         <swagger-core-version>2.0.4</swagger-core-version>
         <scala-version>2.11.1</scala-version>
