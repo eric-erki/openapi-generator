@@ -43,7 +43,6 @@ import io.swagger.v3.oas.models.responses.ApiResponses;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import io.swagger.v3.parser.util.SchemaTypeUtil;
 
-import org.junit.rules.TemporaryFolder;
 import org.openapitools.codegen.ClientOptInput;
 import org.openapitools.codegen.ClientOpts;
 import org.openapitools.codegen.CodegenConstants;
@@ -61,13 +60,15 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class JavaModelTest {
-    private TemporaryFolder folder = new TemporaryFolder();
+    private Path folder;
 
     @Test(description = "convert a simple java model")
     public void simpleModelTest() {
@@ -1138,10 +1139,9 @@ public class JavaModelTest {
 
     @Test
     public void generateModel() throws Exception {
-        String inputSpec = "src/test/resources/3_0/petstore.json";
+        folder = Files.createTempDirectory(JavaModelTest.class.toString());
 
-        folder.create();
-        final File output = folder.getRoot();
+        String inputSpec = "src/test/resources/3_0/petstore.json";
         Assert.assertTrue(new File(inputSpec).exists());
 
         final CodegenConfigurator configurator = new CodegenConfigurator()
@@ -1150,28 +1150,28 @@ public class JavaModelTest {
                 //.addAdditionalProperty("withXml", true)
                 .addAdditionalProperty(CodegenConstants.SERIALIZABLE_MODEL, true)
                 .setInputSpec(inputSpec)
-                .setOutputDir(output.getAbsolutePath());
+                .setOutputDir(folder.toAbsolutePath().toString());
 
         final ClientOptInput clientOptInput = configurator.toClientOptInput();
         new DefaultGenerator().opts(clientOptInput).generate();
 
-        File orderFile = new File(output, "src/main/java/org/openapitools/client/model/Order.java");
+        File orderFile = new File(folder.toAbsolutePath().toString(), "src/main/java/org/openapitools/client/model/Order.java");
         Assert.assertTrue(orderFile.exists());
-        folder.delete();
+        folder.toFile().deleteOnExit();
     }
 
     @Test
     public void generateEmpty() throws Exception {
+        folder = Files.createTempDirectory(JavaModelTest.class.toString());
+
         String inputSpec = "src/test/resources/3_0/ping.yaml";
 
-        folder.create();
-        final File output = folder.getRoot();
         Assert.assertTrue(new File(inputSpec).exists());
 
         JavaClientCodegen config = new org.openapitools.codegen.languages.JavaClientCodegen();
         config.setJava8Mode(true);
         config.setHideGenerationTimestamp(true);
-        config.setOutputDir(output.getAbsolutePath());
+        config.setOutputDir(folder.toAbsolutePath().toString());
 
         final OpenAPIParser openApiParser = new OpenAPIParser();
         final ParseOptions options = new ParseOptions();
@@ -1183,8 +1183,8 @@ public class JavaModelTest {
         opts.setOpts(new ClientOpts());
         new DefaultGenerator().opts(opts).generate();
 
-        File orderFile = new File(output, "src/main/java/org/openapitools/client/api/DefaultApi.java");
+        File orderFile = new File(folder.toAbsolutePath().toString(), "src/main/java/org/openapitools/client/api/DefaultApi.java");
         Assert.assertTrue(orderFile.exists());
-        folder.delete();
+        folder.toFile().deleteOnExit();
     }
 }

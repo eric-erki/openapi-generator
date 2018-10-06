@@ -27,7 +27,6 @@ import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.parser.core.models.ParseOptions;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.rules.TemporaryFolder;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -35,6 +34,8 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 import static org.testng.Assert.*;
@@ -44,25 +45,15 @@ import static org.testng.Assert.*;
  */
 public class RubyClientCodegenTest {
 
-    public TemporaryFolder folder = new TemporaryFolder();
-
-    @BeforeMethod
-    public void setUp() throws Exception {
-        folder.create();
-    }
-
-    @AfterMethod
-    public void tearDown() throws Exception {
-        folder.delete();
-    }
+    private Path folder;
 
     @Test
     public void testGenerateRubyClientWithHtmlEntity() throws Exception {
-        final File output = folder.getRoot();
+        folder = Files.createTempDirectory(RubyClientCodegenTest.class.toString());
 
         final OpenAPI openAPI = new OpenAPIParser().readLocation("src/test/resources/2_0/pathWithHtmlEntity.yaml", null, new ParseOptions()).getOpenAPI();
         CodegenConfig codegenConfig = new RubyClientCodegen();
-        codegenConfig.setOutputDir(output.getAbsolutePath());
+        codegenConfig.setOutputDir(folder.toAbsolutePath().toString());
 
         ClientOptInput clientOptInput = new ClientOptInput().opts(new ClientOpts()).openAPI(openAPI).config(codegenConfig);
 
@@ -79,6 +70,8 @@ public class RubyClientCodegenTest {
         if (!apiFileGenerated) {
             fail("Default api file is not generated!");
         }
+        folder.toFile().deleteOnExit();
+
     }
 
     @Test
@@ -120,11 +113,11 @@ public class RubyClientCodegenTest {
 
     @Test
     public void testBooleanDefaultValue() throws Exception {
-        final File output = folder.getRoot();
+        folder = Files.createTempDirectory(RubyClientCodegenTest.class.toString());
 
         final OpenAPI openAPI = new OpenAPIParser().readLocation("src/test/resources/2_0/npe1.yaml", null, new ParseOptions()).getOpenAPI();
         CodegenConfig codegenConfig = new RubyClientCodegen();
-        codegenConfig.setOutputDir(output.getAbsolutePath());
+        codegenConfig.setOutputDir(folder.toAbsolutePath().toString());
 
         ClientOptInput clientOptInput = new ClientOptInput().opts(new ClientOpts()).openAPI(openAPI).config(codegenConfig);
 
@@ -141,6 +134,8 @@ public class RubyClientCodegenTest {
         if (!apiFileGenerated) {
             fail("Default api file is not generated!");
         }
+        folder.toFile().deleteOnExit();
+
     }
 
     @Test(description = "verify enum parameters (query, form, header)")
