@@ -58,8 +58,8 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
     protected String packageUrl;
     protected String apiDocPath = "docs/";
     protected String modelDocPath = "docs/";
-
     protected Map<Character, String> regexModifiers;
+    protected boolean withXml = Boolean.FALSE;
 
     private String testFolder;
 
@@ -160,6 +160,8 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
                 .defaultValue(Boolean.TRUE.toString()));
         cliOptions.add(new CliOption(CodegenConstants.SOURCECODEONLY_GENERATION, CodegenConstants.SOURCECODEONLY_GENERATION_DESC)
                 .defaultValue(Boolean.FALSE.toString()));
+        cliOptions.add(new CliOption(CodegenConstants.WITH_XML, CodegenConstants.WITH_XML_DESC)
+                .defaultValue(Boolean.FALSE.toString()));
 
         supportedLibraries.put("urllib3", "urllib3-based client");
         supportedLibraries.put("asyncio", "Asyncio-based client (python 3.5+)");
@@ -228,6 +230,11 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
         if (additionalProperties.containsKey(PACKAGE_URL)) {
             setPackageUrl((String) additionalProperties.get(PACKAGE_URL));
         }
+
+        if (additionalProperties.containsKey(CodegenConstants.WITH_XML)) {
+            this.setWithXml(Boolean.valueOf(additionalProperties.get(CodegenConstants.WITH_XML).toString()));
+        }
+        additionalProperties.put(CodegenConstants.WITH_XML, withXml);
 
         String readmePath = "README.md";
         String readmeTemplate = "README.mustache";
@@ -761,5 +768,9 @@ public class PythonClientCodegen extends DefaultCodegen implements CodegenConfig
                 LOGGER.error("Error running the command ({}). Exception: {}", command, e.getMessage());
             }
         }
+    }
+
+    public void setWithXml(boolean withXml) {
+        this.withXml = withXml;
     }
 }

@@ -30,7 +30,6 @@ public class CodegenConstants {
     public static final String MODEL_DOCS = "modelDocs";
     public static final String API_TESTS = "apiTests";
     public static final String API_DOCS = "apiDocs";
-    public static final String WITH_XML = "withXml";
     public static final String SKIP_FORM_MODEL = "skipFormModel";
     /* /end System Properties */
 
@@ -283,4 +282,7 @@ public class CodegenConstants {
     public static final String ENABLE_POST_PROCESS_FILE_DESC = "Enable post-processing file using environment variables.";
 
     public static final String OPEN_API_SPEC_NAME = "openAPISpecName";
+
+    public static final String WITH_XML = "withXml";
+    public static final String WITH_XML_DESC = "whether to include support for application/xml content type and include XML annotations in the model";
 }
