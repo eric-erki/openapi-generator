@@ -7,9 +7,11 @@
 
 import Foundation
 
+
+
 public struct Cat: Codable {
 
-    public var className: String?
+    public var className: String
     public var color: String? = "red"
     public var declawed: Bool?
 
@@ -19,4 +21,6 @@ public struct Cat: Codable {
         self.declawed = declawed
     }
 
+
 }
+

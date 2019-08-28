@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+
 public struct Pet: Codable {
 
     public enum Status: String, Codable {
@@ -16,8 +18,8 @@ public struct Pet: Codable {
     }
     public var id: Int64?
     public var category: Category?
-    public var name: String?
-    public var photoUrls: [String]?
+    public var name: String
+    public var photoUrls: [String]
     public var tags: [Tag]?
     /** pet status in the store */
     public var status: Status?
@@ -31,4 +33,6 @@ public struct Pet: Codable {
         self.status = status
     }
 
+
 }
+
