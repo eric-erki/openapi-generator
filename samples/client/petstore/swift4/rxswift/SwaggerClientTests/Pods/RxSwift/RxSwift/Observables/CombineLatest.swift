@@ -12,8 +12,7 @@ protocol CombineLatestProtocol: class {
     func done(_ index: Int)
 }
 
-class CombineLatestSink<O: ObserverType>
-    : Sink<O>, CombineLatestProtocol {
+class CombineLatestSink<O: ObserverType>: Sink<O>, CombineLatestProtocol {
     typealias Element = O.E
 
     let _lock = RecursiveLock()
@@ -87,8 +86,7 @@ class CombineLatestSink<O: ObserverType>
     }
 }
 
-final class CombineLatestObserver<ElementType>
-    : ObserverType, LockOwnerType, SynchronizedOnType {
+final class CombineLatestObserver<ElementType>: ObserverType, LockOwnerType, SynchronizedOnType {
     typealias Element = ElementType
     typealias ValueSetter = (Element) -> Void
 

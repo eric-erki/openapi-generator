@@ -21,7 +21,7 @@ extension ObservableType {
     }
 }
 
-final private class RepeatElement<Element> : Producer<Element> {
+final private class RepeatElement<Element>: Producer<Element> {
     fileprivate let _element: Element
     fileprivate let _scheduler: ImmediateSchedulerType
 
@@ -38,7 +38,7 @@ final private class RepeatElement<Element> : Producer<Element> {
     }
 }
 
-final private class RepeatElementSink<O: ObserverType> : Sink<O> {
+final private class RepeatElementSink<O: ObserverType>: Sink<O> {
     typealias Parent = RepeatElement<O.E>
 
     private let _parent: Parent

@@ -34,8 +34,7 @@ extension ObservableType {
     }
 }
 
-final private class WithLatestFromSink<FirstType, SecondType, O: ObserverType>
-    : Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
+final private class WithLatestFromSink<FirstType, SecondType, O: ObserverType>: Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
     typealias ResultType = O.E
     typealias Parent = WithLatestFrom<FirstType, SecondType, ResultType>
     typealias E = FirstType
@@ -87,8 +86,7 @@ final private class WithLatestFromSink<FirstType, SecondType, O: ObserverType>
     }
 }
 
-final private class WithLatestFromSecond<FirstType, SecondType, O: ObserverType>
-    : ObserverType, LockOwnerType, SynchronizedOnType {
+final private class WithLatestFromSecond<FirstType, SecondType, O: ObserverType>: ObserverType, LockOwnerType, SynchronizedOnType {
 
     typealias ResultType = O.E
     typealias Parent = WithLatestFromSink<FirstType, SecondType, O>

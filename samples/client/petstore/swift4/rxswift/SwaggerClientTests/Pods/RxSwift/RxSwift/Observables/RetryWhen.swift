@@ -37,8 +37,7 @@ extension ObservableType {
     }
 }
 
-final private class RetryTriggerSink<S: Sequence, O: ObserverType, TriggerObservable: ObservableType, Error>
-    : ObserverType where S.Iterator.Element: ObservableType, S.Iterator.Element.E == O.E {
+final private class RetryTriggerSink<S: Sequence, O: ObserverType, TriggerObservable: ObservableType, Error>: ObserverType where S.Iterator.Element: ObservableType, S.Iterator.Element.E == O.E {
     typealias E = TriggerObservable.E
 
     typealias Parent = RetryWhenSequenceSinkIter<S, O, TriggerObservable, Error>
@@ -64,8 +63,7 @@ final private class RetryTriggerSink<S: Sequence, O: ObserverType, TriggerObserv
     }
 }
 
-final private class RetryWhenSequenceSinkIter<S: Sequence, O: ObserverType, TriggerObservable: ObservableType, Error>
-    : ObserverType, Disposable where S.Iterator.Element: ObservableType, S.Iterator.Element.E == O.E {
+final private class RetryWhenSequenceSinkIter<S: Sequence, O: ObserverType, TriggerObservable: ObservableType, Error>: ObserverType, Disposable where S.Iterator.Element: ObservableType, S.Iterator.Element.E == O.E {
     typealias E = O.E
     typealias Parent = RetryWhenSequenceSink<S, O, TriggerObservable, Error>
 
@@ -108,8 +106,7 @@ final private class RetryWhenSequenceSinkIter<S: Sequence, O: ObserverType, Trig
     }
 }
 
-final private class RetryWhenSequenceSink<S: Sequence, O: ObserverType, TriggerObservable: ObservableType, Error>
-    : TailRecursiveSink<S, O> where S.Iterator.Element: ObservableType, S.Iterator.Element.E == O.E {
+final private class RetryWhenSequenceSink<S: Sequence, O: ObserverType, TriggerObservable: ObservableType, Error>: TailRecursiveSink<S, O> where S.Iterator.Element: ObservableType, S.Iterator.Element.E == O.E {
     typealias Element = O.E
     typealias Parent = RetryWhenSequence<S, TriggerObservable, Error>
 
@@ -160,7 +157,7 @@ final private class RetryWhenSequenceSink<S: Sequence, O: ObserverType, TriggerO
     }
 }
 
-final private class RetryWhenSequence<S: Sequence, TriggerObservable: ObservableType, Error> : Producer<S.Iterator.Element.E> where S.Iterator.Element: ObservableType {
+final private class RetryWhenSequence<S: Sequence, TriggerObservable: ObservableType, Error>: Producer<S.Iterator.Element.E> where S.Iterator.Element: ObservableType {
     typealias Element = S.Iterator.Element.E
 
     fileprivate let _sources: S

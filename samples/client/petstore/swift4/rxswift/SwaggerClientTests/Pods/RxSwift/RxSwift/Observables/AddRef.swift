@@ -6,7 +6,7 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-final class AddRefSink<O: ObserverType> : Sink<O>, ObserverType {
+final class AddRefSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias Element = O.E
 
     override init(observer: O, cancel: Cancelable) {
@@ -24,7 +24,7 @@ final class AddRefSink<O: ObserverType> : Sink<O>, ObserverType {
     }
 }
 
-final class AddRef<Element> : Producer<Element> {
+final class AddRef<Element>: Producer<Element> {
     typealias EventHandler = (Event<Element>) throws -> Void
 
     private let _source: Observable<Element>

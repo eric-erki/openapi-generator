@@ -29,7 +29,7 @@ Time and space complexity of insertion and deletion is O(n).
 
 It is suitable for storing small number of elements.
 */
-struct Bag<T> : CustomDebugStringConvertible {
+struct Bag<T>: CustomDebugStringConvertible {
     /// Type of identifier for inserted elements.
     typealias KeyType = BagKey
 

@@ -36,7 +36,7 @@ extension ObservableType {
     }
 }
 
-fileprivate final class SingleAsyncSink<O: ObserverType> : Sink<O>, ObserverType {
+fileprivate final class SingleAsyncSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias ElementType = O.E
     typealias Parent = SingleAsync<ElementType>
     typealias E = ElementType

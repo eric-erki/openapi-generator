@@ -7,7 +7,7 @@
 //
 
 /// Sequence that repeats `repeatedValue` infinite number of times.
-struct InfiniteSequence<E> : Sequence {
+struct InfiniteSequence<E>: Sequence {
     typealias Element = E
     typealias Iterator = AnyIterator<E>
 

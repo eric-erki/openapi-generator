@@ -45,7 +45,7 @@ private enum AmbState {
     case right
 }
 
-final private class AmbObserver<O: ObserverType> : ObserverType {
+final private class AmbObserver<O: ObserverType>: ObserverType {
     typealias Element = O.E
     typealias Parent = AmbSink<O>
     typealias This = AmbObserver<O>
@@ -79,7 +79,7 @@ final private class AmbObserver<O: ObserverType> : ObserverType {
     }
 }
 
-final private class AmbSink<O: ObserverType> : Sink<O> {
+final private class AmbSink<O: ObserverType>: Sink<O> {
     typealias ElementType = O.E
     typealias Parent = Amb<ElementType>
     typealias AmbObserverType = AmbObserver<O>

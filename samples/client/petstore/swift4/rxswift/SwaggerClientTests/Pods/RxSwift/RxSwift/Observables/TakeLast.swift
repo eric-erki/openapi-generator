@@ -24,7 +24,7 @@ extension ObservableType {
     }
 }
 
-final private class TakeLastSink<O: ObserverType> : Sink<O>, ObserverType {
+final private class TakeLastSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias E = O.E
     typealias Parent = TakeLast<E>
 

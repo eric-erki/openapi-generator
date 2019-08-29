@@ -24,7 +24,7 @@ extension ObservableType {
     }
 }
 
-final private class GenerateSink<S, O: ObserverType> : Sink<O> {
+final private class GenerateSink<S, O: ObserverType>: Sink<O> {
     typealias Parent = Generate<S, O.E>
 
     private let _parent: Parent
@@ -61,7 +61,7 @@ final private class GenerateSink<S, O: ObserverType> : Sink<O> {
     }
 }
 
-final private class Generate<S, E> : Producer<E> {
+final private class Generate<S, E>: Producer<E> {
     fileprivate let _initialState: S
     fileprivate let _condition: (S) throws -> Bool
     fileprivate let _iterate: (S) throws -> S

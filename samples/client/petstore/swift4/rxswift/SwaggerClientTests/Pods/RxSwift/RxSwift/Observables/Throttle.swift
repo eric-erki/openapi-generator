@@ -28,8 +28,7 @@ extension ObservableType {
     }
 }
 
-final private class ThrottleSink<O: ObserverType>
-    : Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
+final private class ThrottleSink<O: ObserverType>: Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
     typealias Element = O.E
     typealias ParentType = Throttle<Element>
 
@@ -135,7 +134,7 @@ final private class ThrottleSink<O: ObserverType>
     }
 }
 
-final private class Throttle<Element> : Producer<Element> {
+final private class Throttle<Element>: Producer<Element> {
 
     fileprivate let _source: Observable<Element>
     fileprivate let _dueTime: RxTimeInterval

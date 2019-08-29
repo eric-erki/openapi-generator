@@ -9,8 +9,7 @@
 /// Represents an object that is both an observable sequence as well as an observer.
 ///
 /// Each notification is broadcasted to all subscribed observers.
-public final class PublishSubject<Element>
-    : Observable<Element>, SubjectType, Cancelable, ObserverType, SynchronizedUnsubscribeType {
+public final class PublishSubject<Element>: Observable<Element>, SubjectType, Cancelable, ObserverType, SynchronizedUnsubscribeType {
     public typealias SubjectObserverType = PublishSubject<Element>
 
     typealias Observers = AnyObserver<Element>.s

@@ -41,7 +41,7 @@ extension ObservableType {
     }
 }
 
-final private class ReduceSink<SourceType, AccumulateType, O: ObserverType> : Sink<O>, ObserverType {
+final private class ReduceSink<SourceType, AccumulateType, O: ObserverType>: Sink<O>, ObserverType {
     typealias ResultType = O.E
     typealias Parent = Reduce<SourceType, AccumulateType, ResultType>
 
@@ -81,7 +81,7 @@ final private class ReduceSink<SourceType, AccumulateType, O: ObserverType> : Si
     }
 }
 
-final private class Reduce<SourceType, AccumulateType, ResultType> : Producer<ResultType> {
+final private class Reduce<SourceType, AccumulateType, ResultType>: Producer<ResultType> {
     typealias AccumulatorType = (AccumulateType, SourceType) throws -> AccumulateType
     typealias ResultSelectorType = (AccumulateType) throws -> ResultType
 

@@ -7,8 +7,7 @@
 //
 
 /// Base class for virtual time schedulers using a priority queue for scheduled items.
-open class VirtualTimeScheduler<Converter: VirtualTimeConverterType>
-    : SchedulerType {
+open class VirtualTimeScheduler<Converter: VirtualTimeConverterType>: SchedulerType {
 
     public typealias VirtualTime = Converter.VirtualTimeUnit
     public typealias VirtualTimeInterval = Converter.VirtualTimeIntervalUnit
@@ -232,8 +231,7 @@ extension VirtualTimeScheduler: CustomDebugStringConvertible {
     }
 }
 
-final class VirtualSchedulerItem<Time>
-    : Disposable {
+final class VirtualSchedulerItem<Time>: Disposable {
     typealias Action = () -> Disposable
 
     let action: Action

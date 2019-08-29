@@ -26,7 +26,7 @@ extension ObservableType {
     }
 }
 
-final private class BufferTimeCount<Element> : Producer<[Element]> {
+final private class BufferTimeCount<Element>: Producer<[Element]> {
 
     fileprivate let _timeSpan: RxTimeInterval
     fileprivate let _count: Int
@@ -47,8 +47,7 @@ final private class BufferTimeCount<Element> : Producer<[Element]> {
     }
 }
 
-final private class BufferTimeCountSink<Element, O: ObserverType>
-    : Sink<O>, LockOwnerType, ObserverType, SynchronizedOnType where O.E == [Element] {
+final private class BufferTimeCountSink<Element, O: ObserverType>: Sink<O>, LockOwnerType, ObserverType, SynchronizedOnType where O.E == [Element] {
     typealias Parent = BufferTimeCount<Element>
     typealias E = Element
 

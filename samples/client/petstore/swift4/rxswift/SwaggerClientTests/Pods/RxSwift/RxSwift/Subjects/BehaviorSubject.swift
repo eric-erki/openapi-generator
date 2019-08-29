@@ -9,8 +9,7 @@
 /// Represents a value that changes over time.
 ///
 /// Observers can subscribe to the subject to receive the last (or initial) value and all subsequent notifications.
-public final class BehaviorSubject<Element>
-    : Observable<Element>, SubjectType, ObserverType, SynchronizedUnsubscribeType, Disposable {
+public final class BehaviorSubject<Element>: Observable<Element>, SubjectType, ObserverType, SynchronizedUnsubscribeType, Disposable {
     public typealias SubjectObserverType = BehaviorSubject<Element>
 
     typealias Observers = AnyObserver<Element>.s

@@ -44,7 +44,7 @@ extension ObservableType {
     }
 }
 
-final private class ScanSink<ElementType, O: ObserverType> : Sink<O>, ObserverType {
+final private class ScanSink<ElementType, O: ObserverType>: Sink<O>, ObserverType {
     typealias Accumulate = O.E
     typealias Parent = Scan<ElementType, Accumulate>
     typealias E = ElementType

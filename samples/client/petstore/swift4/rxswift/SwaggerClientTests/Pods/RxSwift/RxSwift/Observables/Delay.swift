@@ -25,8 +25,7 @@ extension ObservableType {
     }
 }
 
-final private class DelaySink<O: ObserverType>
-    : Sink<O>, ObserverType {
+final private class DelaySink<O: ObserverType>: Sink<O>, ObserverType {
     typealias E = O.E
     typealias Source = Observable<E>
     typealias DisposeKey = Bag<Disposable>.KeyType

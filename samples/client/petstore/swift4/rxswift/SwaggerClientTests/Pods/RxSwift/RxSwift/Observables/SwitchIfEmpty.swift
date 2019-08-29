@@ -77,8 +77,7 @@ final private class SwitchIfEmptySink<O: ObserverType>: Sink<O>, ObserverType {
     }
 }
 
-final private class SwitchIfEmptySinkIter<O: ObserverType>
-    : ObserverType {
+final private class SwitchIfEmptySinkIter<O: ObserverType>: ObserverType {
     typealias E = O.E
     typealias Parent = SwitchIfEmptySink<O>
 

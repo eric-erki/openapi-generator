@@ -9,8 +9,7 @@
 /**
  Represents an observable wrapper that can be connected and disconnected from its underlying observable sequence.
  */
-public class ConnectableObservable<Element>
-    : Observable<Element>, ConnectableObservableType {
+public class ConnectableObservable<Element>: Observable<Element>, ConnectableObservableType {
 
     /**
      Connects the observable wrapper to its source. All subscribed observers will receive values from the underlying observable sequence as long as the connection is established.
@@ -146,7 +145,7 @@ extension ObservableType {
     }
 }
 
-final private class Connection<S: SubjectType> : ObserverType, Disposable {
+final private class Connection<S: SubjectType>: ObserverType, Disposable {
     typealias E = S.SubjectObserverType.E
 
     private var _lock: RecursiveLock
@@ -193,8 +192,7 @@ final private class Connection<S: SubjectType> : ObserverType, Disposable {
     }
 }
 
-final private class ConnectableObservableAdapter<S: SubjectType>
-    : ConnectableObservable<S.E> {
+final private class ConnectableObservableAdapter<S: SubjectType>: ConnectableObservable<S.E> {
     typealias ConnectionType = Connection<S>
 
     fileprivate let _source: Observable<S.SubjectObserverType.E>
@@ -243,8 +241,7 @@ final private class ConnectableObservableAdapter<S: SubjectType>
     }
 }
 
-final private class RefCountSink<CO: ConnectableObservableType, O: ObserverType>
-    : Sink<O>, ObserverType where CO.E == O.E {
+final private class RefCountSink<CO: ConnectableObservableType, O: ObserverType>: Sink<O>, ObserverType where CO.E == O.E {
     typealias Element = O.E
     typealias Parent = RefCount<CO>
 

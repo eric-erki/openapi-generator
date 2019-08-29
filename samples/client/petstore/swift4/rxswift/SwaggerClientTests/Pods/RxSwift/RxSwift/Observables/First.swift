@@ -6,7 +6,7 @@
 //  Copyright © 2017 Krunoslav Zaher. All rights reserved.
 //
 
-fileprivate final class FirstSink<Element, O: ObserverType> : Sink<O>, ObserverType where O.E == Element? {
+fileprivate final class FirstSink<Element, O: ObserverType>: Sink<O>, ObserverType where O.E == Element? {
     typealias E = Element
     typealias Parent = First<E>
 

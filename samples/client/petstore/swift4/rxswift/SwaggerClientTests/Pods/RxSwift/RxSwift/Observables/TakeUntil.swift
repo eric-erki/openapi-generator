@@ -22,8 +22,7 @@ extension ObservableType {
     }
 }
 
-final private class TakeUntilSinkOther<Other, O: ObserverType>
-    : ObserverType, LockOwnerType, SynchronizedOnType {
+final private class TakeUntilSinkOther<Other, O: ObserverType>: ObserverType, LockOwnerType, SynchronizedOnType {
     typealias Parent = TakeUntilSink<Other, O>
     typealias E = Other
 
@@ -66,8 +65,7 @@ final private class TakeUntilSinkOther<Other, O: ObserverType>
 #endif
 }
 
-final private class TakeUntilSink<Other, O: ObserverType>
-    : Sink<O>, LockOwnerType, ObserverType, SynchronizedOnType {
+final private class TakeUntilSink<Other, O: ObserverType>: Sink<O>, LockOwnerType, ObserverType, SynchronizedOnType {
     typealias E = O.E
     typealias Parent = TakeUntil<E, Other>
 

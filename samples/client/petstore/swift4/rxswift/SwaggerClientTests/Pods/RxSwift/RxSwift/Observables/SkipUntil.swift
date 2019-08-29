@@ -22,8 +22,7 @@ extension ObservableType {
     }
 }
 
-final private class SkipUntilSinkOther<Other, O: ObserverType>
-    : ObserverType, LockOwnerType, SynchronizedOnType {
+final private class SkipUntilSinkOther<Other, O: ObserverType>: ObserverType, LockOwnerType, SynchronizedOnType {
     typealias Parent = SkipUntilSink<Other, O>
     typealias E = Other
 
@@ -67,8 +66,7 @@ final private class SkipUntilSinkOther<Other, O: ObserverType>
 
 }
 
-final private class SkipUntilSink<Other, O: ObserverType>
-    : Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
+final private class SkipUntilSink<Other, O: ObserverType>: Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
     typealias E = O.E
     typealias Parent = SkipUntil<E, Other>
 

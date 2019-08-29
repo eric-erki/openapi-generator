@@ -29,7 +29,7 @@ extension ObservableType {
     }
 }
 
-final private class ObserveOn<E> : Producer<E> {
+final private class ObserveOn<E>: Producer<E> {
     let scheduler: ImmediateSchedulerType
     let source: Observable<E>
 
@@ -62,7 +62,7 @@ enum ObserveOnState: Int32 {
     case running = 1
 }
 
-final private class ObserveOnSink<O: ObserverType> : ObserverBase<O.E> {
+final private class ObserveOnSink<O: ObserverType>: ObserverBase<O.E> {
     typealias E = O.E
 
     let _scheduler: ImmediateSchedulerType
@@ -160,7 +160,7 @@ final private class ObserveOnSink<O: ObserverType> : ObserverBase<O.E> {
     }
 #endif
 
-final private class ObserveOnSerialDispatchQueueSink<O: ObserverType> : ObserverBase<O.E> {
+final private class ObserveOnSerialDispatchQueueSink<O: ObserverType>: ObserverBase<O.E> {
     let scheduler: SerialDispatchQueueScheduler
     let observer: O
 
@@ -198,7 +198,7 @@ final private class ObserveOnSerialDispatchQueueSink<O: ObserverType> : Observer
     }
 }
 
-final private class ObserveOnSerialDispatchQueue<E> : Producer<E> {
+final private class ObserveOnSerialDispatchQueue<E>: Producer<E> {
     let scheduler: SerialDispatchQueueScheduler
     let source: Observable<E>
 

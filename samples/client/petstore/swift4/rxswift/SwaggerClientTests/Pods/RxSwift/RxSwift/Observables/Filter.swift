@@ -70,7 +70,7 @@ final private class FilterSink<O: ObserverType>: Sink<O>, ObserverType {
     }
 }
 
-final private class Filter<Element> : Producer<Element> {
+final private class Filter<Element>: Producer<Element> {
     typealias Predicate = (Element) throws -> Bool
 
     private let _source: Observable<Element>

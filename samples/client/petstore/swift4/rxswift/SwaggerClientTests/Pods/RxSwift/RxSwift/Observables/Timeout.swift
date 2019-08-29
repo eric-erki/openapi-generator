@@ -129,7 +129,7 @@ final private class TimeoutSink<O: ObserverType>: Sink<O>, LockOwnerType, Observ
     }
 }
 
-final private class Timeout<Element> : Producer<Element> {
+final private class Timeout<Element>: Producer<Element> {
 
     fileprivate let _source: Observable<Element>
     fileprivate let _dueTime: RxTimeInterval

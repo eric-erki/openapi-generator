@@ -22,8 +22,7 @@ extension ObservableType {
     }
 }
 
-final private class TakeWhileSink<O: ObserverType>
-    : Sink<O>, ObserverType {
+final private class TakeWhileSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias Element = O.E
     typealias Parent = TakeWhile<Element>
 

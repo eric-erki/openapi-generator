@@ -7,7 +7,7 @@
 //
 
 /// Represents an observable sequence of elements that have a common key.
-public struct GroupedObservable<Key, Element> : ObservableType {
+public struct GroupedObservable<Key, Element>: ObservableType {
     public typealias E = Element
 
     /// Gets the common key.

@@ -23,8 +23,7 @@ extension ObservableType {
     }
 }
 
-final private class DelaySubscriptionSink<O: ObserverType>
-    : Sink<O>, ObserverType {
+final private class DelaySubscriptionSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias E = O.E
     typealias Parent = DelaySubscription<E>
 

@@ -156,8 +156,7 @@ extension ObservableType {
     }
 }
 
-fileprivate final class ShareReplay1WhileConnectedConnection<Element>
-    : ObserverType, SynchronizedUnsubscribeType {
+fileprivate final class ShareReplay1WhileConnectedConnection<Element>: ObserverType, SynchronizedUnsubscribeType {
     typealias E = Element
     typealias Observers = AnyObserver<Element>.s
     typealias DisposeKey = Observers.KeyType
@@ -258,8 +257,7 @@ fileprivate final class ShareReplay1WhileConnectedConnection<Element>
 }
 
 // optimized version of share replay for most common case
-final private class ShareReplay1WhileConnected<Element>
-    : Observable<Element> {
+final private class ShareReplay1WhileConnected<Element>: Observable<Element> {
 
     fileprivate typealias Connection = ShareReplay1WhileConnectedConnection<Element>
 
@@ -307,8 +305,7 @@ final private class ShareReplay1WhileConnected<Element>
     }
 }
 
-fileprivate final class ShareWhileConnectedConnection<Element>
-    : ObserverType, SynchronizedUnsubscribeType {
+fileprivate final class ShareWhileConnectedConnection<Element>: ObserverType, SynchronizedUnsubscribeType {
     typealias E = Element
     typealias Observers = AnyObserver<Element>.s
     typealias DisposeKey = Observers.KeyType
@@ -404,8 +401,7 @@ fileprivate final class ShareWhileConnectedConnection<Element>
 }
 
 // optimized version of share replay for most common case
-final private class ShareWhileConnected<Element>
-    : Observable<Element> {
+final private class ShareWhileConnected<Element>: Observable<Element> {
 
     fileprivate typealias Connection = ShareWhileConnectedConnection<Element>
 

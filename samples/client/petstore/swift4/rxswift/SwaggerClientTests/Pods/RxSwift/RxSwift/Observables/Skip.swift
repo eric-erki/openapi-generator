@@ -41,7 +41,7 @@ extension ObservableType {
 
 // count version
 
-final private class SkipCountSink<O: ObserverType> : Sink<O>, ObserverType {
+final private class SkipCountSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias Element = O.E
     typealias Parent = SkipCount<Element>
 
@@ -94,7 +94,7 @@ final private class SkipCount<Element>: Producer<Element> {
 
 // time version
 
-final private class SkipTimeSink<ElementType, O: ObserverType> : Sink<O>, ObserverType where O.E == ElementType {
+final private class SkipTimeSink<ElementType, O: ObserverType>: Sink<O>, ObserverType where O.E == ElementType {
     typealias Parent = SkipTime<ElementType>
     typealias Element = ElementType
 

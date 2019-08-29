@@ -9,8 +9,7 @@
 /// Represents an object that is both an observable sequence as well as an observer.
 ///
 /// Each notification is broadcasted to all subscribed and future observers, subject to buffer trimming policies.
-public class ReplaySubject<Element>
-    : Observable<Element>, SubjectType, ObserverType, Disposable {
+public class ReplaySubject<Element>: Observable<Element>, SubjectType, ObserverType, Disposable {
     public typealias SubjectObserverType = ReplaySubject<Element>
 
     typealias Observers = AnyObserver<Element>.s
@@ -94,8 +93,7 @@ public class ReplaySubject<Element>
     #endif
 }
 
-private class ReplayBufferBase<Element>
-    : ReplaySubject<Element>, SynchronizedUnsubscribeType {
+private class ReplayBufferBase<Element>: ReplaySubject<Element>, SynchronizedUnsubscribeType {
 
     func trim() {
         rxAbstractMethod()
@@ -198,7 +196,7 @@ private class ReplayBufferBase<Element>
     }
 }
 
-fileprivate final class ReplayOne<Element> : ReplayBufferBase<Element> {
+fileprivate final class ReplayOne<Element>: ReplayBufferBase<Element> {
     private var _value: Element?
 
     override init() {
@@ -225,7 +223,7 @@ fileprivate final class ReplayOne<Element> : ReplayBufferBase<Element> {
     }
 }
 
-private class ReplayManyBase<Element> : ReplayBufferBase<Element> {
+private class ReplayManyBase<Element>: ReplayBufferBase<Element> {
     fileprivate var _queue: Queue<Element>
 
     init(queueSize: Int) {
@@ -248,7 +246,7 @@ private class ReplayManyBase<Element> : ReplayBufferBase<Element> {
     }
 }
 
-fileprivate final class ReplayMany<Element> : ReplayManyBase<Element> {
+fileprivate final class ReplayMany<Element>: ReplayManyBase<Element> {
     private let _bufferSize: Int
 
     init(bufferSize: Int) {
@@ -264,7 +262,7 @@ fileprivate final class ReplayMany<Element> : ReplayManyBase<Element> {
     }
 }
 
-fileprivate final class ReplayAll<Element> : ReplayManyBase<Element> {
+fileprivate final class ReplayAll<Element>: ReplayManyBase<Element> {
     init() {
         super.init(queueSize: 0)
     }

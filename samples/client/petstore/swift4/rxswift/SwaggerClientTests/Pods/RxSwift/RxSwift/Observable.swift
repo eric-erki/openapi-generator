@@ -9,7 +9,7 @@
 /// A type-erased `ObservableType`. 
 ///
 /// It represents a push style sequence.
-public class Observable<Element> : ObservableType {
+public class Observable<Element>: ObservableType {
     /// Type of elements in sequence.
     public typealias E = Element
 

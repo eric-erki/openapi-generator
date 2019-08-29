@@ -33,7 +33,7 @@ extension ObservableType {
     }
 }
 
-final private class ObservableOptionalScheduledSink<O: ObserverType> : Sink<O> {
+final private class ObservableOptionalScheduledSink<O: ObserverType>: Sink<O> {
     typealias E = O.E
     typealias Parent = ObservableOptionalScheduled<E>
 
@@ -62,7 +62,7 @@ final private class ObservableOptionalScheduledSink<O: ObserverType> : Sink<O> {
     }
 }
 
-final private class ObservableOptionalScheduled<E> : Producer<E> {
+final private class ObservableOptionalScheduled<E>: Producer<E> {
     fileprivate let _optional: E?
     fileprivate let _scheduler: ImmediateSchedulerType
 

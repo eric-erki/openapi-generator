@@ -46,7 +46,7 @@ extension ObservableType where E: RxAbstractInteger {
     }
 }
 
-final private class TimerSink<O: ObserverType> : Sink<O> where O.E: RxAbstractInteger {
+final private class TimerSink<O: ObserverType>: Sink<O> where O.E: RxAbstractInteger {
     typealias Parent = Timer<O.E>
 
     private let _parent: Parent
@@ -64,7 +64,7 @@ final private class TimerSink<O: ObserverType> : Sink<O> where O.E: RxAbstractIn
     }
 }
 
-final private class TimerOneOffSink<O: ObserverType> : Sink<O> where O.E: RxAbstractInteger {
+final private class TimerOneOffSink<O: ObserverType>: Sink<O> where O.E: RxAbstractInteger {
     typealias Parent = Timer<O.E>
 
     private let _parent: Parent
@@ -75,7 +75,7 @@ final private class TimerOneOffSink<O: ObserverType> : Sink<O> where O.E: RxAbst
     }
 
     func run() -> Disposable {
-        return _parent._scheduler.scheduleRelative(self, dueTime: _parent._dueTime) { (_f`) -> Disposable in
+        return _parent._scheduler.scheduleRelative(self, dueTime: _parent._dueTime) { (_`) -> Disposable in
             self.forwardOn(.next(0))
             self.forwardOn(.completed)
             self.dispose()

@@ -23,7 +23,7 @@ extension ObservableType {
     }
 }
 
-final private class ToArraySink<SourceType, O: ObserverType> : Sink<O>, ObserverType where O.E == [SourceType] {
+final private class ToArraySink<SourceType, O: ObserverType>: Sink<O>, ObserverType where O.E == [SourceType] {
     typealias Parent = ToArray<SourceType>
 
     let _parent: Parent
@@ -50,7 +50,7 @@ final private class ToArraySink<SourceType, O: ObserverType> : Sink<O>, Observer
     }
 }
 
-final private class ToArray<SourceType> : Producer<[SourceType]> {
+final private class ToArray<SourceType>: Producer<[SourceType]> {
     let _source: Observable<SourceType>
 
     init(source: Observable<SourceType>) {

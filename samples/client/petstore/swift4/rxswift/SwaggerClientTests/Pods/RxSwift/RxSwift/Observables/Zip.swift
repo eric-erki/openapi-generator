@@ -12,7 +12,7 @@ protocol ZipSinkProtocol: class {
     func done(_ index: Int)
 }
 
-class ZipSink<O: ObserverType> : Sink<O>, ZipSinkProtocol {
+class ZipSink<O: ObserverType>: Sink<O>, ZipSinkProtocol {
     typealias Element = O.E
 
     let _arity: Int
@@ -97,8 +97,7 @@ class ZipSink<O: ObserverType> : Sink<O>, ZipSinkProtocol {
     }
 }
 
-final class ZipObserver<ElementType>
-    : ObserverType, LockOwnerType, SynchronizedOnType {
+final class ZipObserver<ElementType>: ObserverType, LockOwnerType, SynchronizedOnType {
     typealias E = ElementType
     typealias ValueSetter = (ElementType) -> Void
 

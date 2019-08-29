@@ -6,7 +6,7 @@
 //  Copyright © 2017 Krunoslav Zaher. All rights reserved.
 //
 
-fileprivate final class AsSingleSink<O: ObserverType> : Sink<O>, ObserverType {
+fileprivate final class AsSingleSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias ElementType = O.E
     typealias E = ElementType
 

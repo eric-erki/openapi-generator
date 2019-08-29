@@ -24,8 +24,7 @@ extension ObservableType {
     }
 }
 
-final private class WindowTimeCountSink<Element, O: ObserverType>
-    : Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType where O.E == Observable<Element> {
+final private class WindowTimeCountSink<Element, O: ObserverType>: Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType where O.E == Observable<Element> {
     typealias Parent = WindowTimeCount<Element>
     typealias E = Element
 
@@ -145,7 +144,7 @@ final private class WindowTimeCountSink<Element, O: ObserverType>
     }
 }
 
-final private class WindowTimeCount<Element> : Producer<Observable<Element>> {
+final private class WindowTimeCount<Element>: Producer<Observable<Element>> {
 
     fileprivate let _timeSpan: RxTimeInterval
     fileprivate let _count: Int

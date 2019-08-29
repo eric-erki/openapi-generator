@@ -136,8 +136,7 @@ extension ObservableType {
     }
 }
 
-fileprivate final class MergeLimitedSinkIter<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>
-    : ObserverType, LockOwnerType, SynchronizedOnType where SourceSequence.E == Observer.E {
+fileprivate final class MergeLimitedSinkIter<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>: ObserverType, LockOwnerType, SynchronizedOnType where SourceSequence.E == Observer.E {
     typealias E = Observer.E
     typealias DisposeKey = CompositeDisposable.DisposeKey
     typealias Parent = MergeLimitedSink<SourceElement, SourceSequence, Observer>
@@ -203,8 +202,7 @@ fileprivate final class MergeLimitedBasicSink<SourceSequence: ObservableConverti
     }
 }
 
-private class MergeLimitedSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>
-    : Sink<Observer>, ObserverType where Observer.E == SourceSequence.E {
+private class MergeLimitedSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>: Sink<Observer>, ObserverType where Observer.E == SourceSequence.E {
     typealias QueueType = Queue<SourceSequence>
 
     let _maxConcurrent: Int
@@ -306,7 +304,7 @@ private class MergeLimitedSink<SourceElement, SourceSequence: ObservableConverti
     }
 }
 
-final private class MergeLimited<SourceSequence: ObservableConvertibleType> : Producer<SourceSequence.E> {
+final private class MergeLimited<SourceSequence: ObservableConvertibleType>: Producer<SourceSequence.E> {
     private let _source: Observable<SourceSequence>
     private let _maxConcurrent: Int
 
@@ -324,7 +322,7 @@ final private class MergeLimited<SourceSequence: ObservableConvertibleType> : Pr
 
 // MARK: Merge
 
-fileprivate final class MergeBasicSink<S: ObservableConvertibleType, O: ObserverType> : MergeSink<S, S, O> where O.E == S.E {
+fileprivate final class MergeBasicSink<S: ObservableConvertibleType, O: ObserverType>: MergeSink<S, S, O> where O.E == S.E {
     override func performMap(_ element: S) throws -> S {
         return element
     }
@@ -332,7 +330,7 @@ fileprivate final class MergeBasicSink<S: ObservableConvertibleType, O: Observer
 
 // MARK: flatMap
 
-fileprivate final class FlatMapSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType> : MergeSink<SourceElement, SourceSequence, Observer> where Observer.E == SourceSequence.E {
+fileprivate final class FlatMapSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>: MergeSink<SourceElement, SourceSequence, Observer> where Observer.E == SourceSequence.E {
     typealias Selector = (SourceElement) throws -> SourceSequence
 
     private let _selector: Selector
@@ -349,7 +347,7 @@ fileprivate final class FlatMapSink<SourceElement, SourceSequence: ObservableCon
 
 // MARK: FlatMapFirst
 
-fileprivate final class FlatMapFirstSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType> : MergeSink<SourceElement, SourceSequence, Observer> where Observer.E == SourceSequence.E {
+fileprivate final class FlatMapFirstSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>: MergeSink<SourceElement, SourceSequence, Observer> where Observer.E == SourceSequence.E {
     typealias Selector = (SourceElement) throws -> SourceSequence
 
     private let _selector: Selector
@@ -368,7 +366,7 @@ fileprivate final class FlatMapFirstSink<SourceElement, SourceSequence: Observab
     }
 }
 
-fileprivate final class MergeSinkIter<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType> : ObserverType where Observer.E == SourceSequence.E {
+fileprivate final class MergeSinkIter<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>: ObserverType where Observer.E == SourceSequence.E {
     typealias Parent = MergeSink<SourceElement, SourceSequence, Observer>
     typealias DisposeKey = CompositeDisposable.DisposeKey
     typealias E = Observer.E
@@ -398,8 +396,7 @@ fileprivate final class MergeSinkIter<SourceElement, SourceSequence: ObservableC
     }
 }
 
-private class MergeSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>
-    : Sink<Observer>, ObserverType where Observer.E == SourceSequence.E {
+private class MergeSink<SourceElement, SourceSequence: ObservableConvertibleType, Observer: ObserverType>: Sink<Observer>, ObserverType where Observer.E == SourceSequence.E {
     typealias ResultType = Observer.E
     typealias Element = SourceElement
 
@@ -560,7 +557,7 @@ final class ConcatMap<SourceElement, SourceSequence: ObservableConvertibleType>:
     }
 }
 
-final class Merge<SourceSequence: ObservableConvertibleType> : Producer<SourceSequence.E> {
+final class Merge<SourceSequence: ObservableConvertibleType>: Producer<SourceSequence.E> {
     private let _source: Observable<SourceSequence>
 
     init(source: Observable<SourceSequence>) {
@@ -574,7 +571,7 @@ final class Merge<SourceSequence: ObservableConvertibleType> : Producer<SourceSe
     }
 }
 
-final private class MergeArray<Element> : Producer<Element> {
+final private class MergeArray<Element>: Producer<Element> {
     private let _sources: [Observable<Element>]
 
     init(sources: [Observable<Element>]) {
