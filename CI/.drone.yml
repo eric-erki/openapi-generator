@@ -2,6 +2,12 @@ kind: pipeline
 name: default
 
 steps:
+# test cpprestsdk client
+- name: cpprestsdk-client-test
+  image: gcc:8.3
+  commands:
+  - sudo apt-get install libcpprest-dev
+  - (cd samples/client/petstore/cpp-restsdk/ && cmake -DCMAKE_CXX_FLAGS="-I/usr/local/opt/openssl/include" -DCMAKE_MODULE_LINKER_FLAGS="-L/usr/local/opt/openssl/lib" make)
 # test haskell client
 - name: haskell-client-test
   image: haskell:8.6.5
