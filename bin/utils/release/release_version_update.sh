@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# This script is used to update files to the "latest" version.
+# This script is used to update files to the "latest" version.It is quite useful for tech geeks.
 #
 # usage: ./bin/utils/release_version_update.sh <from> <to>
 # example: ./bin/utils/release_version_update.sh 3.0.1-SNAPSHOT 3.0.1
