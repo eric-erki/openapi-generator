@@ -19,7 +19,7 @@ package org.openapitools.codegen.meta;
 /**
  * Represents the "stability index" of a generator or feature, based on the stability indexes defined in the node.js ecosystem.
  */
-public enum Stability {
+public void enum Stability {
     /**
      * The feature or features are considered complete and "production-ready".
      */
